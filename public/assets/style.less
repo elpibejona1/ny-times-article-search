@@ -1,0 +1,120 @@
+@import '_reset.less';
+@import '_grid.less';
+@import '_mixins.less';
+@import 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Average');
+
+// Color Declarations
+
+@black: #000;
+@white: #fff;
+@teal: #326891;
+
+// General Styles
+
+.hidden { visibility: hidden; }
+
+.appTitle {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 35px;
+	text-align: center;
+	color: @black;
+}
+
+.appTagline {
+	font-family: 'Average', serif;
+	font-size: 18px;
+	text-align: center;
+	color: @black;
+}
+
+.appSearch { margin-bottom: 15px; }
+
+.appSearch__input {
+	font-family: 'Average', serif;
+	font-size: 18px;
+	padding: 5px;
+	width: 310px;
+	text-align: center;
+}
+
+.appSearch__button {
+	font-size: 18px;
+	font-family: 'Fjalla One', sans-serif;
+	padding: 6px 6px 8px;
+}
+
+.articleWrapper {
+	width: 100%;
+	padding: 15px;
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both; 
+	}
+}
+
+.article {
+	width: 375px;
+	height: 350px;
+	padding: 15px;
+	display: inline-block;
+	border: 1px dotted @black;
+	position: relative;
+	vertical-align: top;
+}
+
+.article__thumbnail {
+	max-width: 40%;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 70px;
+}
+
+.article__thumbnail[src=''] { display: none; }
+
+.article__title {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 22px;
+	color: @black;
+	padding: 15px 0;
+}
+
+.article__date {
+	padding-bottom: 15px;
+	font-family: 'Average', serif;
+	font-size: 12px;
+	color: @black;
+}
+
+.article__excerpt {
+	font-family: 'Average', serif;
+	font-size: 16px;
+	color: @black;
+	padding-bottom: 15px;
+}
+
+.article__link {
+	margin-top: 15px;
+	color: @teal;
+	font-size: 14px;
+	font-family: 'Fjalla One', sans-serif;
+	position: absolute;
+	left: 15px;
+	bottom: 15px;
+}
+
+.pageSelect { margin-top: 30px; text-align: center; }
+
+.pageSelect__link {
+	font-family: 'Fjalla One', sans-serif;
+	color: @teal;
+	font-size: 14px;
+	text-decoration: none;
+
+	&--prev { padding-right: 7.5px; }
+	&--next { padding-left: 7.5px; }
+}

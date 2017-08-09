@@ -1,0 +1,49 @@
+.transform(@value){
+  -webkit-transform: @value;
+  -moz-transform:    @value;
+  -ms-transform:     @value;
+  -o-transform:      @value;
+  transform:         @value;
+}
+
+.transition(@transition) {
+	-webkit-transition: @transition;  
+	-moz-transition:    @transition;
+	-ms-transition:     @transition; 
+	-o-transition:      @transition;
+	transition:         @transition;  
+}
+
+
+// Generates a margin-top/bottom/etc. series of classes. Multiples of 10. 
+// @n controls the number of them (so 15 would be 10 - 150 in multiples of 10)
+// @dir controls the direction. so 'top' , 'bottom', 'left', 'right'
+
+.generateMargin(@n,@dir,@i:0) when (@i <= @n){
+	@a: 10 * @i;
+	.margin-@{dir}-@{a}{
+		margin-@{dir}: (@i * 10) + 0px !important;
+	}
+
+	.generateMargin(@n,@dir,(@i + 1));
+}
+
+.generatePadding(@n,@dir,@i:0) when (@i <= @n){
+	@a: 10 * @i;
+	.padding-@{dir}-@{a}{
+		padding-@{dir}: (@i * 10) + 0px !important;
+	}
+
+	.generatePadding(@n,@dir,(@i + 1));
+}
+
+
+// Creates a linear gradient with @startColor and @endColor
+.gradient (@startColor: #eee, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}

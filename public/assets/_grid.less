@@ -1,0 +1,82 @@
+//Number of columns for the grid.
+@columns: 12;
+
+//How much space to the left and right of each column. In %.
+@gutter: 1%;
+
+//How large is the container?
+@containerSize: 808px;
+
+
+*{ box-sizing: border-box; }
+
+.container {
+	position: relative;
+	max-width: @containerSize;
+	width: @containerSize;
+	margin: 0 auto;
+}
+
+.fullContainer {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.row {
+	width: 100%;
+	clear: both;
+	position: relative;
+
+	> *:first-child {
+		margin-left: 0 !important;
+	}
+}
+
+.container:after,
+.row:after {
+	content: "";
+	display: table;
+	clear: both; 
+}
+
+
+
+// Generators
+
+
+// Basic grid generator. Generates @n columns with an @g margin (gutter)
+// (ex) .columns(6) for a 6 column width item.
+
+.columns(@i,@g:@gutter) {
+	width: (@i * 100% / @columns) - @g + ((@g / @columns) * @i);
+	margin-left: @g;
+	box-sizing: border-box;
+	float: left;
+
+}
+
+// Generates an Offset col (Padding to the left)
+// (ex) .columns(11) .offset(1) for a 10 column, 1 offset item. (Column # must take into account the offset as it is padding)
+
+.offset(@i){
+	padding-left: ((@i * 100% / @columns) - @gutter + ((@gutter / @columns) * @i)) + @gutter;
+	
+}
+
+.offsetMargin(@i){
+	margin-left: ((@i * 100% / @columns) - @gutter + ((@gutter / @columns) * @i)) + @gutter !important;
+	
+}
+
+// Generates a grid with @n columns and no gutter
+// (ex) .columns--ng(6) for a 6 column width item that has no gutter (best used together with multiple NG items, such as .columns--ng(6) * 2 )
+
+.columns--ng(@i) {
+	width: (@i * 100% / @columns);
+	margin-left: 0 !important;
+	box-sizing: border-box;
+	float: left;
+}
+
